@@ -11,3 +11,120 @@
 @media(max-width:360px){.photo-label{font-size:8px}.hero-topline>span:last-child{font-size:8px;max-width:105px}.hero-bottom{flex-wrap:wrap;gap:18px}.image-caption{font-size:9px}}
 
 .round-link{flex-shrink:0;white-space:nowrap}
+
+/* Photo cover */
+.cover {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: clamp(570px, 82svh, 900px);
+  overflow: hidden;
+  background: #141510;
+  color: var(--paper);
+}
+.cover-photo {
+  position: absolute;
+  inset: 0 0 0 27%;
+  z-index: -1;
+}
+.cover-photo img {
+  object-position: 55% 35%;
+  filter: saturate(.72);
+}
+.cover-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #141510, transparent 42%), linear-gradient(0deg, #141510bf, transparent 44%);
+}
+.cover-copy { padding: 7vw var(--pad) 4vw; }
+.cover h1 {
+  font-size: clamp(76px, 10.4vw, 210px);
+  line-height: 1.13;
+  color: var(--acid);
+}
+.cover h1 span {
+  display: block;
+  margin-bottom: .12em;
+  font: italic 400 .55em/1.12 Georgia, serif;
+  letter-spacing: -.055em;
+  color: var(--paper);
+}
+.cover-copy p { max-width: 32ch; margin: 22px 0; line-height: 1.55; font-size: clamp(16px,1.4vw,21px); }
+.cover-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 26px;
+  min-height: 46px;
+  padding: 0 20px;
+  background: var(--acid);
+  color: var(--ink);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.cover-link span { font-size: 20px; transition: transform .2s; }
+.cover-link:hover span { transform: translateY(3px); }
+
+/* One period is exactly one complete group, including the trailing space. */
+.ticker { padding: 12px 0; background: var(--acid); color: var(--ink); }
+.ticker > .ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: marquee 24s linear infinite;
+}
+.ticker-group {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100vw;
+  text-transform: uppercase;
+}
+.ticker-group > * { margin-inline: clamp(14px, 1.6vw, 34px); }
+.ticker-group span { font: 700 clamp(21px, 1.9vw, 40px)/1.2 var(--display); }
+.ticker-group i { font: normal 20px/1 var(--body); }
+@media (prefers-reduced-motion: reduce) {
+  .ticker > .ticker-track { animation: none; }
+}
+
+/* The whole contact sheet is visible without carousel controls. */
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 36px 20px;
+  padding-inline: var(--pad);
+}
+.photo-wall .film-card {
+  grid-column: span 4;
+  display: block;
+  padding: 0;
+  align-self: start;
+  cursor: zoom-in;
+}
+.photo-wall .film-card:first-child { grid-column: span 5; }
+.photo-wall .film-card:nth-child(3) { grid-column: span 3; }
+.photo-wall .film-card:nth-child(4) { grid-column: 4 / span 4; }
+.photo-wall .film-card:last-child { grid-column: span 4; }
+.photo-wall .film-card img { height: clamp(220px, 25vw, 490px); filter: none; }
+.photo-wall .film-caption { border-bottom: 1px solid var(--line); padding: 10px 0; }
+.lightbox .lb-arrow { width: auto; height: 44px; padding: 0 14px; border-radius: 24px; font-size: 13px; }
+@media(max-width: 650px) {
+  .cover { min-height: 0; display: flex; flex-direction: column; align-items: stretch; }
+  .cover-photo { position: relative; inset: auto; width: 100%; height: clamp(290px, 89vw, 500px); }
+  .cover-photo img { object-position: 56% 32%; }
+  .cover-photo::after { background: linear-gradient(0deg,#141510,transparent 34%); }
+  .cover-copy { padding: 0 var(--pad) 34px; margin-top: -42px; }
+  .cover h1 { font-size: 14.8vw; }
+  .cover h1 span { font-size: .67em; }
+  .cover-copy p { margin: 15px 0 20px; font-size: 16px; }
+  .photo-wall { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 13px; }
+  .photo-wall .film-card:nth-child(n) { grid-column: span 1; }
+  .photo-wall .film-card:first-child { grid-column: 1 / -1; }
+  .photo-wall .film-card img { height: auto; aspect-ratio: 3/4; }
+  .photo-wall .film-card:first-child img { aspect-ratio: 4/3; }
+  .lightbox .lb-prev { left: auto; right: calc(50% + 6px); }
+  .lightbox .lb-next { right: auto; left: calc(50% + 6px); }
+}

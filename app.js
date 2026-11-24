@@ -28,14 +28,9 @@ dialog.addEventListener('click',e=>{if(e.target===dialog)closePhoto()});
 dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();showPhoto(photoIndex-1)}if(e.key==='ArrowRight'){e.preventDefault();showPhoto(photoIndex+1)}});
 let startX=0;dialog.addEventListener('touchstart',e=>startX=e.changedTouches[0].clientX,{passive:true});
 dialog.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-startX;if(Math.abs(d)>65)showPhoto(photoIndex+(d<0?1:-1))},{passive:true});
-const strip=document.querySelector('.film-strip');
-for(const [id,direction] of [['film-prev',-1],['film-next',1]])document.getElementById(id).addEventListener('click',()=>strip.scrollBy({left:direction*Math.min(strip.clientWidth*.7,460),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));
 if(window.gsap&&window.ScrollTrigger){
  gsap.registerPlugin(ScrollTrigger);
  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)',()=>{
-  gsap.from('.hero h1',{y:30,opacity:0,duration:.8,ease:'power3.out'});
-  gsap.from('.hero-portrait',{clipPath:'inset(100% 0% 0% 0%)',duration:1,ease:'power3.inOut',delay:.1});
-  gsap.from('.hero-side',{opacity:0,duration:.9,stagger:.1,ease:'power3.out',delay:.25});
   gsap.utils.toArray('.reveal').forEach(el=>gsap.from(el,{y:35,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 94%',once:true}}));
   gsap.fromTo('.winter-image',{yPercent:-7},{yPercent:10,ease:'none',scrollTrigger:{trigger:'.winter',start:'top bottom',end:'bottom top',scrub:1}});
   gsap.from('.winter h2',{y:50,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.winter-content',start:'top 80%',once:true}});
