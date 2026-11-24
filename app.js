@@ -28,13 +28,31 @@ dialog.addEventListener('click',e=>{if(e.target===dialog)closePhoto()});
 dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();showPhoto(photoIndex-1)}if(e.key==='ArrowRight'){e.preventDefault();showPhoto(photoIndex+1)}});
 let startX=0;dialog.addEventListener('touchstart',e=>startX=e.changedTouches[0].clientX,{passive:true});
 dialog.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-startX;if(Math.abs(d)>65)showPhoto(photoIndex+(d<0?1:-1))},{passive:true});
-if(window.gsap&&window.ScrollTrigger){
- gsap.registerPlugin(ScrollTrigger);
- gsap.matchMedia().add('(prefers-reduced-motion: no-preference)',()=>{
-  gsap.utils.toArray('.reveal').forEach(el=>gsap.from(el,{y:35,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 94%',once:true}}));
-  gsap.fromTo('.winter-image',{yPercent:-7},{yPercent:10,ease:'none',scrollTrigger:{trigger:'.winter',start:'top bottom',end:'bottom top',scrub:1}});
-  gsap.from('.winter h2',{y:50,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.winter-content',start:'top 80%',once:true}});
-  gsap.to('.big-asterisk',{rotation:160,ease:'none',scrollTrigger:{trigger:'.motion-heading',start:'top bottom',end:'bottom top',scrub:1}});
- });
- window.addEventListener('load',()=>ScrollTrigger.refresh());
-}
+
+const cover = document.querySelector('.print');
+const coverImage = document.getElementById('cover-image');
+const selectors = [...document.querySelectorAll('[data-cover]')];
+
+selectors.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    const photo = photos.find(item => item.id === button.dataset.cover);
+    if (cover.dataset.photo === photo.id) return;
+    selectors.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    const remaining = selectors.filter(item => item !== button);
+    document.querySelectorAll('.back-print img').forEach((image, position) => {
+      image.src = remaining[position].querySelector('img').src;
+    });
+    cover.dataset.photo = photo.id;
+    cover.setAttribute('aria-label', 'Открыть фото «' + photo.title + '»');
+    coverImage.src = './assets/' + photo.id + '.webp';
+    coverImage.alt = photo.alt;
+    document.getElementById('cover-caption').textContent = photo.title;
+    document.getElementById('cover-count').textContent = (index + 1) + ' / 3';
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cover.animate([
+        { transform: 'rotate(4deg) translateY(-8px)' },
+        { transform: 'rotate(1.5deg)' }
+      ], { duration: 350, easing: 'ease-out' });
+    }
+  });
+});
