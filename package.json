@@ -1,0 +1,11 @@
+{
+  "name": "kupitman-personal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Василий Купитман — всегда в движении",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node --check app.js && node --check ball.js && node scripts/check.mjs"
+  }
+}
