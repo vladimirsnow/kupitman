@@ -132,14 +132,6 @@ footer a { font-size: 14px; color: var(--lime); }
 /* On phones the story reads like a printed sports magazine. */
 @media (max-width:700px), (hover:none) and (max-height:540px) and (max-width:1000px) {
   :root {
-    color-scheme: light;
-    --ground: #fff7e9;
-    --surface: #f3e7d3;
-    --ink: #211b18;
-    --muted: #443831;
-    --rule: #ad9c89;
-    --accent: #9d2727;
-    --lime: var(--accent);
     --pad: clamp(18px,5.3vw,36px);
     --space: clamp(52px,13vw,80px);
     --reading-size: clamp(1.375rem,5.8vw,1.625rem);
@@ -147,8 +139,6 @@ footer a { font-size: 14px; color: var(--lime); }
   }
   body { color: var(--ink); overflow-wrap: anywhere; }
   .story-grid > *,.play-title > *,.interest-copy,.film-title > * { min-width: 0; }
-  ::selection,.skip { color: white; background: var(--accent); }
-  :focus-visible { outline-color: #2775dc; }
 
   .cover {
     grid-template-areas: 'title' 'photo' 'lead' 'foot';
@@ -158,14 +148,14 @@ footer a { font-size: 14px; color: var(--lime); }
     background: var(--ground);
   }
   .cover-copy { display: contents; }
-  .cover h1 { grid-area: title; color: var(--ink); font-size: min(16.4vw,7.5rem); line-height: 1.08; }
-  .cover h1 span { font: italic 500 clamp(2rem,10vw,4rem)/1 Georgia,serif; color: var(--accent); }
+  .cover h1 { grid-area: title; font-size: min(16.4vw,7.5rem); line-height: 1.08; }
+  .cover h1 span { font: italic 500 clamp(2rem,10vw,4rem)/1 Georgia,serif; }
   .cover-photo {
     grid-area: photo; position: relative; inset: auto; z-index: auto;
-    margin: 0; min-height: 0; border-block: 2px solid var(--ink);
+    margin: 0; min-height: 0; border-block: 1px solid var(--rule);
     background: var(--surface); overflow: hidden;
   }
-  .cover-photo img { position: absolute; inset: 0; object-position: 57% 35%; filter: grayscale(1); }
+  .cover-photo img { position: absolute; inset: 0; object-position: 57% 35%; }
   .cover-photo::after,.location::before { display: none; }
   .cover-lead,.story-copy > p,.winter-copy p,.play-title p,.interest-copy dd {
     color: inherit; font: 400 var(--reading-size)/1.48 var(--body);
@@ -176,61 +166,58 @@ footer a { font-size: 14px; color: var(--lime); }
     grid-area: foot; display: flex; flex-wrap: wrap; gap: .25rem .875rem;
     align-items: center; justify-content: space-between;
   }
-  .location { margin: 0; font: var(--folio); color: var(--accent); letter-spacing: 0; text-transform: none; }
+  .location { margin: 0; font: var(--folio); color: var(--lime); letter-spacing: 0; text-transform: none; }
   .cover-link {
     font-size: 1.125rem; gap: .5em; border: 0; border-radius: 0; padding: 0;
     min-height: 48px; background: transparent; color: var(--ink);
     text-decoration: underline; text-underline-offset: .25em;
   }
-  .cover-link:hover { color: var(--accent); background: transparent; }
-  .ticker { color: var(--ground); background: var(--accent); padding-top: 8px; padding-bottom: max(8px,env(safe-area-inset-bottom)); }
+  .cover-link:hover { color: var(--lime); background: transparent; }
+  .ticker { padding-top: 8px; padding-bottom: max(8px,env(safe-area-inset-bottom)); }
   .ticker-group span { font-size: 1.5rem; }
   .ticker-group i { font-size: 1.1rem; }
 
   .chapter { padding-block: var(--space); }
   .chapter-line { font: var(--folio); letter-spacing: .04em; margin-bottom: 1.5rem; gap: 12px; }
-  .chapter-line span { color: inherit; border-right: 2px solid currentColor; padding-right: 12px; }
+  .chapter-line span { border-right: 2px solid currentColor; padding-right: 12px; }
   .chapter-line::after { background: currentColor; opacity: .45; margin: 0; }
   .story-grid,.play-title,.interests { grid-template-columns: minmax(0,1fr); gap: 20px; }
   .chapter h2,.interest-copy h3 {
     font: 700 clamp(2.75rem,12vw,5.2rem)/1.04 Georgia,serif;
     text-transform: none; letter-spacing: -.035em;
   }
-  .chapter h2 em { color: var(--accent); font-style: italic; }
+  .chapter h2 em { color: var(--lime); font-style: italic; }
   .story-copy { padding: 0; }
-  .facts { margin-top: 28px; padding: 0; display: block; border-top: 3px double var(--ink); }
+  .facts { margin-top: 28px; padding: 0; display: block; border-top: 1px solid var(--rule); }
   .facts > div { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .15em .75em; padding: 12px 0; border-bottom: 1px solid var(--rule); }
   .facts dt,.facts small { color: var(--ink); font: 400 1.125rem/1.4 var(--body); }
-  .facts dd { color: var(--accent); font-size: 2.25rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .facts dd { color: var(--lime); font-size: 2.25rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
 
-  .winter { background: #522126; color: var(--ground); }
-  .winter .chapter-line,.winter h2 em { color: var(--ground); }
+  .winter,.film { background: var(--surface); }
   .winter-frame { height: auto; display: grid; gap: 22px; isolation: auto; overflow: visible; background: transparent; }
   .winter-copy { display: contents; }
   .winter-copy h2 { grid-row: 1; }
   .winter-copy h2 br { display: none; }
-  .winter-frame img { grid-row: 2; position: static; z-index: auto; height: auto; width: 100%; aspect-ratio: 4/4.3; object-position: 50% 64%; mask-image: none; border: 5px solid var(--ground); }
+  .winter-frame img { grid-row: 2; position: static; z-index: auto; height: auto; width: 100%; aspect-ratio: 4/4.3; object-position: 50% 64%; mask-image: none; border: 1px solid var(--rule); }
   .winter-frame::before { display: none; }
 
   .play-title { margin-bottom: 22px; }
   .court { display: block; position: relative; }
   .court-photo { width: 100%; }
   .court-photo img { height: auto; aspect-ratio: 4/4.7; object-position: 50% 41%; }
-  .court-diagram { position: absolute; right: 12px; bottom: -18px; width: clamp(85px,25vw,120px); aspect-ratio: 1; border: 4px solid var(--ground); border-radius: 50%; background: #36352c; }
+  .court-diagram { position: absolute; right: 12px; bottom: -18px; width: clamp(85px,25vw,120px); aspect-ratio: 1; border: 4px solid var(--ground); border-radius: 50%; background: var(--surface); }
   .ball-stage { width: 100%; height: 100%; min-height: 0; }
   .interests { margin-top: 54px; gap: 0; }
-  .gym-photo { width: 67%; justify-self: end; border: 4px solid white; transform: rotate(2deg); box-shadow: 0 1px 4px #211b1833; }
+  .gym-photo { width: 67%; justify-self: end; border: 3px solid var(--rule); transform: rotate(2deg); box-shadow: 0 2px 6px #0005; }
   .gym-photo img { height: auto; aspect-ratio: 4/3; object-position: 50% 40%; }
   .interest-copy h3 { font-size: clamp(2.25rem,10vw,3.4rem); margin: 22px 0 14px; }
   .interest-copy dl > div { grid-template-columns: 1fr; gap: .35rem; padding-block: 1rem; }
-  .interest-copy dt { font-size: 1.375rem; color: var(--accent); }
-  .film { color: var(--ground); background: var(--ink); }
-  .film .chapter-line,.film h2 em { color: var(--ground); }
+  .interest-copy dt { font-size: 1.375rem; color: var(--lime); }
   .film-title { margin-bottom: 22px; }
   .frames {
     margin-inline: calc(-1 * var(--pad)); padding: 0 var(--pad) 10px; gap: 14px;
     overflow-x: auto; scroll-padding-inline: var(--pad); scroll-snap-type: x mandatory;
-    scrollbar-width: thin; scrollbar-color: var(--ground) var(--ink);
+    scrollbar-width: thin; scrollbar-color: var(--lime) var(--ground);
   }
   .frame,.frame.expanded {
     display: flex; flex-direction: column; flex: 0 0 min(88%,28rem); height: auto; align-self: stretch;
@@ -242,8 +229,8 @@ footer a { font-size: 14px; color: var(--lime); }
     color: var(--ink); font: italic 700 1.625rem/1.15 Georgia,serif; text-transform: none; white-space: normal;
   }
   .frame::after,.frame.expanded::before { display: none; }
-  footer { flex-wrap: wrap; background: var(--ink); color: var(--ground); border-color: #665b53; padding-block: 18px; }
-  footer a { display: inline-flex; align-items: center; min-height: 48px; font-size: 1.125rem; text-decoration: underline; color: inherit; }
+  footer { flex-wrap: wrap; padding-block: 18px; }
+  footer a { display: inline-flex; align-items: center; min-height: 48px; font-size: 1.125rem; text-decoration: underline; }
   .lightbox { padding-top: max(12px,env(safe-area-inset-top)); padding-bottom: max(12px,env(safe-area-inset-bottom)); }
   .lightbox[open] { grid-template-columns: 1fr 1fr; grid-template-rows: auto minmax(0,1fr) auto; gap: 8px; }
   .lightbox-top,.lb-arrow { font-size: 1.125rem; }
