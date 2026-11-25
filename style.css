@@ -138,6 +138,7 @@ footer a { font-size: 14px; color: var(--lime); }
   .interest-copy h3 { font-size: 27px; margin-bottom: 10px; }
   .gym-photo img { height: clamp(240px,65vw,315px); }
   .film-title { display: block; }
+  .film-title h2 { font-size: clamp(44px, 14vw, 76px); }
   .film-title p { margin-top: 13px; }
   footer { padding-block: 22px; }
   .lightbox[open] { grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr auto; }
