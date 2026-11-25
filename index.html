@@ -13,71 +13,74 @@
 <a class="skip" href="#about">Перейти к истории</a>
 <main>
 <section class="cover" id="top" aria-labelledby="hero-title">
-  <div class="cover-photo">
-    <img src="./assets/portrait.webp" alt="Василий Бондаренко с заклеенным ртом смотрит в камеру" width="1280" height="854" fetchpriority="high">
-  </div>
+  <div class="cover-photo"><img src="./assets/portrait.webp" alt="Портрет Василия Бондаренко" width="1280" height="854" fetchpriority="high"></div>
   <div class="cover-copy">
-    <h1 id="hero-title"><span>Василий</span> БОНДАРЕНКО</h1>
-    <p>Мне 17. Я из Астаны, а теперь живу в Алматы — здесь мои родные и горы.</p>
-    <a href="#about" class="cover-link">Моя история <span aria-hidden="true">↓</span></a>
+    <p class="location">Алматы, Казахстан</p>
+    <h1 id="hero-title"><span>Василий</span> Бондаренко</h1>
+    <p class="cover-lead">Мне 17. Живу в Алматы, катаюсь на сноуборде и играю в баскетбол ещё со школы.</p>
+    <a class="cover-link" href="#about">Моя история <span aria-hidden="true">↓</span></a>
   </div>
 </section>
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track"><div class="ticker-group"><span>Сноуборд</span><i>✷</i><span>Баскетбол</span><i>✷</i><span>Алматы</span><i>✷</i><span>Dota 2</span><i>✷</i><span>Астана</span><i>✷</i></div><div class="ticker-group"><span>Сноуборд</span><i>✷</i><span>Баскетбол</span><i>✷</i><span>Алматы</span><i>✷</i><span>Dota 2</span><i>✷</i><span>Астана</span><i>✷</i></div></div>
 </div>
 
-<section class="story chapter" id="about" aria-labelledby="about-title">
-  <div class="wrap story-grid">
-    <div class="story-heading"><p class="section-label">Обо мне</p><h2 id="about-title">Раньше —<br>на лето.<br><em>Теперь домой.</em></h2></div>
-    <div class="story-body">
-      <p class="route"><span>Астана</span><i aria-hidden="true"></i><span>Алматы</span></p>
-      <p>Раньше я каждое лето приезжал из Астаны в Алматы к родным. Здесь у меня вся семья. А теперь я переехал и живу у бабушки с дедушкой.</p>
-      <dl class="facts"><div><dt>Возраст</dt><dd>17 лет</dd></div><div><dt>День рождения</dt><dd>13 ноября</dd></div><div><dt>Рост</dt><dd>≈ 180 см</dd></div></dl>
+<section class="chapter wrap story" id="about" aria-labelledby="about-title">
+  <p class="chapter-line"><span>01</span> Обо мне</p>
+  <div class="story-grid">
+    <h2 id="about-title">Из Астаны<br><em>в Алматы.</em></h2>
+    <div class="story-copy"><p>Раньше я каждое лето приезжал сюда к родным. А потом переехал. Теперь живу у бабушки с дедушкой — здесь у меня вся семья.</p>
+      <dl class="facts"><div><dt>Возраст</dt><dd>17 <small>лет</small></dd></div><div><dt>День рождения</dt><dd>13.11</dd></div><div><dt>Рост</dt><dd>≈180 <small>см</small></dd></div></dl>
     </div>
   </div>
 </section>
-<section class="winter" id="winter" aria-labelledby="winter-title">
-  <div class="snow-photo"><img src="./assets/slope.webp" alt="На заснеженном склоне зажглись фонари, над горами ещё синее небо" width="717" height="1280" loading="lazy"></div>
-  <div class="snow-copy"><p class="section-label">Сноуборд</p><h2 id="winter-title">Туда, где <br><em>снег.</em></h2><p>Любимое время года? Зима. Берёшь доску, поднимаешься на склон — и весь вечер впереди.</p></div>
-</section>
-<section class="play chapter" id="motion" aria-labelledby="play-title">
-  <div class="wrap">
-    <div class="play-heading"><p class="section-label">После школы</p><h2 id="play-title">Ещё один <em>бросок.</em></h2></div>
-    <div class="court">
-      <button class="court-shot" data-photo="basket" aria-label="Открыть фотографию прыжка к кольцу"><img src="./assets/basket.webp" alt="Василий в прыжке у баскетбольного кольца" width="590" height="986" loading="lazy"></button>
-      <div class="court-notes"><h3>Баскетбол</h3><p>Начал играть ещё в школе, примерно в пятом–седьмом классе. С тех пор мяч всегда где-то рядом.</p>
-        <div class="ball-stage" id="ball-stage"><div class="ball-fallback" aria-hidden="true"></div><canvas id="ball-canvas" aria-label="Трёхмерный баскетбольный мяч"></canvas></div>
-      </div>
-    </div>
-    <div class="offcourt">
-      <button class="gym-shot" data-photo="gym" aria-label="Открыть фотографию из зала"><img src="./assets/gym.webp" alt="Василий после тренировки в зале" width="960" height="1280" loading="lazy"></button>
-      <div class="off-notes"><div><h3>Зал</h3><p>Кроме баскетбола и сноуборда, ещё хожу в зал.</p></div><div><h3>Dota 2</h3><p>Дома играю на компе. Из всех игр больше всего люблю Доту.</p></div></div>
-    </div>
+
+<section class="chapter wrap winter" id="winter" aria-labelledby="winter-title">
+  <p class="chapter-line"><span>02</span> Сноуборд</p>
+  <div class="winter-frame">
+    <img src="./assets/slope.webp" alt="Фонари освещают вечерний горный склон" width="717" height="1280" loading="lazy">
+    <div class="winter-copy"><h2 id="winter-title">Туда, <br>где <em>снег.</em></h2><p>Из всех времён года больше всего люблю зиму. Особенно когда можно взять доску и поехать в горы.</p></div>
   </div>
 </section>
-<section class="film chapter" id="photos" aria-labelledby="film-title">
-  <div class="wrap gallery-layout">
-    <div class="gallery-intro">
-      <p class="section-label">04 / Фотоархив</p>
-      <h2 id="film-title">Фотоплёнка</h2>
-    </div>
-    <div class="gallery-index" role="group" aria-label="Выбрать фотографию">
-      <button type="button" data-select="portrait" aria-controls="gallery-preview" aria-pressed="false" aria-label="Без лишних слов"><img src="./assets/portrait.webp" alt=""><span>Без лишних слов</span></button>
-      <button type="button" data-select="slope" aria-controls="gallery-preview" aria-pressed="true" aria-label="Туда, где снег"><img src="./assets/slope.webp" alt=""><span>Туда, где снег</span></button>
-      <button type="button" data-select="basket" aria-controls="gallery-preview" aria-pressed="false" aria-label="Выше кольца"><img src="./assets/basket.webp" alt=""><span>Выше кольца</span></button>
-      <button type="button" data-select="gym" aria-controls="gallery-preview" aria-pressed="false" aria-label="После тренировки"><img src="./assets/gym.webp" alt=""><span>После тренировки</span></button>
-      <button type="button" data-select="wild" aria-controls="gallery-preview" aria-pressed="false" aria-label="Без контекста"><img src="./assets/wild.webp" alt=""><span>Без контекста</span></button>
-    </div>
-    <figure class="gallery-screen" id="gallery-preview">
-      <button type="button" class="screen-open" data-photo="slope" aria-label="Открыть оригинал: Туда, где снег">
-        <img src="./assets/slope.webp" alt="Вечерний горный склон" width="717" height="1280">
-        <span class="expand">Открыть целиком</span>
-      </button>
-      <figcaption aria-live="polite">Туда, где снег</figcaption>
-    </figure>
+
+<section class="chapter wrap play" id="motion" aria-labelledby="play-title">
+  <p class="chapter-line"><span>03</span> После школы</p>
+  <div class="play-title"><h2 id="play-title">Ещё один <em>бросок.</em></h2><p>В баскетбол я играю примерно с пятого–седьмого класса.</p></div>
+  <div class="court">
+    <button class="court-photo" data-photo="basket" aria-label="Открыть фото с баскетбольной площадки"><img src="./assets/basket.webp" alt="Василий тянется с мячом к кольцу" width="590" height="986" loading="lazy"></button>
+    <div class="court-diagram"><div class="court-lines" aria-hidden="true"></div><div class="ball-stage" id="ball-stage"><div class="ball-fallback" aria-hidden="true"></div><canvas id="ball-canvas" aria-label="Трёхмерный баскетбольный мяч"></canvas></div></div>
+  </div>
+  <div class="interests">
+    <button class="gym-photo" data-photo="gym" aria-label="Открыть фото из зала"><img src="./assets/gym.webp" alt="Василий после тренировки" width="960" height="1280" loading="lazy"></button>
+    <div class="interest-copy"><h3>После площадки</h3><dl><div><dt>Зал</dt><dd>Ещё хожу в зал. На тренировку нахожу время и между играми.</dd></div><div><dt>Dota 2</dt><dd>Когда сажусь за комп, чаще всего хочется сыграть в Доту. Это моя любимая игра.</dd></div></dl></div>
   </div>
 </section>
-<footer><div class="wrap"><span>Василий Бондаренко</span><a href="#top">Вернуться наверх ↑</a></div></footer>
+
+<section class="chapter wrap film" id="photos" aria-labelledby="film-title">
+  <p class="chapter-line"><span>04</span> Фотоархив</p>
+  <div class="film-title"><h2 id="film-title">Фотоплёнка<em>.</em></h2>
+    <p class="desktop-hint">Наведи курсор на кадр, чтобы раскрыть его.</p>
+    <p class="touch-hint">Листай фотографии вбок.</p>
+  </div>
+  <div class="frames" role="group" aria-label="Пять фотографий Василия">
+    <button class="frame expanded" data-photo="portrait" aria-label="Открыть фото «Без лишних слов»">
+      <img src="./assets/portrait.webp" alt="Портрет Василия"><span class="frame-caption">Без лишних слов</span>
+    </button>
+    <button class="frame" data-photo="slope" aria-label="Открыть фото «Туда, где снег»">
+      <img src="./assets/slope.webp" alt="Освещённый вечерний склон"><span class="frame-caption">Туда, где снег</span>
+    </button>
+    <button class="frame" data-photo="basket" aria-label="Открыть фото «Выше кольца»">
+      <img src="./assets/basket.webp" alt="Бросок в прыжке"><span class="frame-caption">Выше кольца</span>
+    </button>
+    <button class="frame" data-photo="gym" aria-label="Открыть фото «После тренировки»">
+      <img src="./assets/gym.webp" alt="Василий в зале"><span class="frame-caption">После тренировки</span>
+    </button>
+    <button class="frame" data-photo="wild" aria-label="Открыть фото «Без контекста»">
+      <img src="./assets/wild.webp" alt="Шуточный кадр с чемоданом фишек"><span class="frame-caption">Без контекста</span>
+    </button>
+  </div>
+</section>
+<footer class="wrap"><span>Василий Бондаренко</span><a href="#top">Наверх ↑</a></footer>
 </main>
 <dialog class="lightbox" aria-label="Просмотр фотографий"><div class="lightbox-top"><span id="lightbox-count"></span><button id="lightbox-close" aria-label="Закрыть фотографию">Закрыть <b>×</b></button></div><button id="lightbox-prev" class="lb-arrow lb-prev" aria-label="Предыдущая фотография">Назад</button><figure><img id="lightbox-image" alt=""><figcaption id="lightbox-caption"></figcaption></figure><button id="lightbox-next" class="lb-arrow lb-next" aria-label="Следующая фотография">Дальше</button></dialog>
 <script type="module" src="./ball.js"></script>

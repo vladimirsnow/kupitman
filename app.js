@@ -29,19 +29,15 @@ dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault()
 let startX=0;dialog.addEventListener('touchstart',e=>startX=e.changedTouches[0].clientX,{passive:true});
 dialog.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-startX;if(Math.abs(d)>65)showPhoto(photoIndex+(d<0?1:-1))},{passive:true});
 
-const preview = document.querySelector('.screen-open');
-const previewImage = preview.querySelector('img');
-const caption = document.querySelector('.gallery-screen figcaption');
-const choices = document.querySelectorAll('[data-select]');
 
-choices.forEach(button => {
-  button.addEventListener('click', () => {
-    const photo = photos.find(item => item.id === button.dataset.select);
-    choices.forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
-    preview.dataset.photo = photo.id;
-    preview.setAttribute('aria-label', 'Открыть оригинал: ' + photo.title);
-    previewImage.src = './assets/' + photo.id + '.webp';
-    previewImage.alt = photo.alt;
-    caption.textContent = photo.title;
+// Keep the last viewed frame open when the pointer leaves the filmstrip.
+const frames = document.querySelectorAll('.frame');
+function expandFrame(selected) {
+  frames.forEach(frame => frame.classList.toggle('expanded', frame === selected));
+}
+frames.forEach(frame => {
+  frame.addEventListener('pointerenter', event => {
+    if (event.pointerType !== 'touch') expandFrame(frame);
   });
+  frame.addEventListener('focus', () => expandFrame(frame));
 });
