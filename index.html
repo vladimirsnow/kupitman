@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f2efe6"><meta name="description" content="Василий Бондаренко. Из Астаны в Алматы. Сноуборд, баскетбол, зал и немного Dota 2 — личная история в фотографиях.">
+<meta name="theme-color" content="#141510"><meta name="description" content="Василий Бондаренко. Из Астаны в Алматы. Сноуборд, баскетбол, зал и немного Dota 2 — личная история в фотографиях.">
 <title>Василий Бондаренко — всегда в движении</title>
 <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="./assets/fonts/oswald-700.ttf" as="font" type="font/ttf" crossorigin>
@@ -13,28 +13,13 @@
 <a class="skip" href="#about">Перейти к истории</a>
 <main>
 <section class="cover" id="top" aria-labelledby="hero-title">
-  <div class="cover-inner">
-    <div class="cover-copy">
-      <p class="location"><i aria-hidden="true"></i> Алматы, Казахстан</p>
-      <h1 id="hero-title"><em>Василий</em> Бондаренко</h1>
-      <p class="lead">Мне 17. Зимой я на доске, в остальное время — на площадке. А когда дома, запускаю Доту.</p>
-      <a class="ink-link" href="#about">Моя история <span aria-hidden="true">↓</span></a>
-    </div>
-    <div class="album">
-      <div class="stack">
-        <div class="back-print far" aria-hidden="true"><img src="./assets/slope.webp" alt=""></div>
-        <div class="back-print near" aria-hidden="true"><img src="./assets/basket.webp" alt=""></div>
-        <button class="print" data-photo="portrait" aria-label="Открыть портрет Василия">
-          <img id="cover-image" src="./assets/portrait.webp" width="1280" height="854" fetchpriority="high" alt="Василий с заклеенным ртом смотрит в камеру">
-          <span class="paper-caption"><i id="cover-caption">Без лишних слов</i><small id="cover-count">1 / 3</small></span>
-        </button>
-      </div>
-      <div class="contact" role="group" aria-label="Выбрать снимок обложки">
-        <button type="button" data-cover="portrait" aria-pressed="true" aria-label="Портрет"><img src="./assets/portrait.webp" alt=""></button>
-        <button type="button" data-cover="slope" aria-pressed="false" aria-label="Склон"><img src="./assets/slope.webp" alt=""></button>
-        <button type="button" data-cover="basket" aria-pressed="false" aria-label="Баскетбол"><img src="./assets/basket.webp" alt=""></button>
-      </div>
-    </div>
+  <div class="cover-photo">
+    <img src="./assets/portrait.webp" alt="Василий Бондаренко с заклеенным ртом смотрит в камеру" width="1280" height="854" fetchpriority="high">
+  </div>
+  <div class="cover-copy">
+    <h1 id="hero-title"><span>Василий</span> БОНДАРЕНКО</h1>
+    <p>Мне 17. Я из Астаны, а теперь живу в Алматы — здесь мои родные и горы.</p>
+    <a href="#about" class="cover-link">Моя история <span aria-hidden="true">↓</span></a>
   </div>
 </section>
 <div class="ticker" aria-hidden="true">
@@ -62,7 +47,6 @@
       <button class="court-shot" data-photo="basket" aria-label="Открыть фотографию прыжка к кольцу"><img src="./assets/basket.webp" alt="Василий в прыжке у баскетбольного кольца" width="590" height="986" loading="lazy"></button>
       <div class="court-notes"><h3>Баскетбол</h3><p>Начал играть ещё в школе, примерно в пятом–седьмом классе. С тех пор мяч всегда где-то рядом.</p>
         <div class="ball-stage" id="ball-stage"><div class="ball-fallback" aria-hidden="true"></div><canvas id="ball-canvas" aria-label="Трёхмерный баскетбольный мяч"></canvas></div>
-        <button class="ball-link" id="ball-spin" type="button">Покрутить мяч <span aria-hidden="true">↻</span></button>
       </div>
     </div>
     <div class="offcourt">
@@ -72,16 +56,27 @@
   </div>
 </section>
 <section class="film chapter" id="photos" aria-labelledby="film-title">
-  <div class="wrap"><p class="section-label">04 / Фотоплёнка</p>
-  <div class="film-heading"><h2 id="film-title">Мои <em>пять кадров.</em></h2><p>Нажми на снимок, <br>чтобы открыть целиком.</p></div>
-<div class="photo-wall">
-<button class="film-card" data-photo="portrait"><img src="./assets/portrait.webp" alt="Портрет Василия" width="1280" height="854"><span class="film-caption">Без лишних слов</span></button>
-<button class="film-card" data-photo="slope"><img src="./assets/slope.webp" alt="Вечер на горном склоне" width="725" height="1280"><span class="film-caption">Туда, где снег</span></button>
-<button class="film-card" data-photo="basket"><img src="./assets/basket.webp" alt="Прыжок у кольца" width="590" height="986"><span class="film-caption">Выше кольца</span></button>
-<button class="film-card" data-photo="gym"><img src="./assets/gym.webp" alt="Фотография из зала" width="960" height="1280"><span class="film-caption">После тренировки</span></button>
-<button class="film-card" data-photo="wild"><img src="./assets/wild.webp" alt="Шуточный кадр в парике и с чемоданом фишек" width="621" height="602"><span class="film-caption">Без контекста</span></button>
-</div></div></section>
-
+  <div class="wrap gallery-layout">
+    <div class="gallery-intro">
+      <p class="section-label">04 / Фотоархив</p>
+      <h2 id="film-title">Фотоплёнка</h2>
+    </div>
+    <div class="gallery-index" role="group" aria-label="Выбрать фотографию">
+      <button type="button" data-select="portrait" aria-controls="gallery-preview" aria-pressed="false" aria-label="Без лишних слов"><img src="./assets/portrait.webp" alt=""><span>Без лишних слов</span></button>
+      <button type="button" data-select="slope" aria-controls="gallery-preview" aria-pressed="true" aria-label="Туда, где снег"><img src="./assets/slope.webp" alt=""><span>Туда, где снег</span></button>
+      <button type="button" data-select="basket" aria-controls="gallery-preview" aria-pressed="false" aria-label="Выше кольца"><img src="./assets/basket.webp" alt=""><span>Выше кольца</span></button>
+      <button type="button" data-select="gym" aria-controls="gallery-preview" aria-pressed="false" aria-label="После тренировки"><img src="./assets/gym.webp" alt=""><span>После тренировки</span></button>
+      <button type="button" data-select="wild" aria-controls="gallery-preview" aria-pressed="false" aria-label="Без контекста"><img src="./assets/wild.webp" alt=""><span>Без контекста</span></button>
+    </div>
+    <figure class="gallery-screen" id="gallery-preview">
+      <button type="button" class="screen-open" data-photo="slope" aria-label="Открыть оригинал: Туда, где снег">
+        <img src="./assets/slope.webp" alt="Вечерний горный склон" width="717" height="1280">
+        <span class="expand">Открыть целиком</span>
+      </button>
+      <figcaption aria-live="polite">Туда, где снег</figcaption>
+    </figure>
+  </div>
+</section>
 <footer><div class="wrap"><span>Василий Бондаренко</span><a href="#top">Вернуться наверх ↑</a></div></footer>
 </main>
 <dialog class="lightbox" aria-label="Просмотр фотографий"><div class="lightbox-top"><span id="lightbox-count"></span><button id="lightbox-close" aria-label="Закрыть фотографию">Закрыть <b>×</b></button></div><button id="lightbox-prev" class="lb-arrow lb-prev" aria-label="Предыдущая фотография">Назад</button><figure><img id="lightbox-image" alt=""><figcaption id="lightbox-caption"></figcaption></figure><button id="lightbox-next" class="lb-arrow lb-next" aria-label="Следующая фотография">Дальше</button></dialog>

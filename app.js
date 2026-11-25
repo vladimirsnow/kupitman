@@ -29,30 +29,19 @@ dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault()
 let startX=0;dialog.addEventListener('touchstart',e=>startX=e.changedTouches[0].clientX,{passive:true});
 dialog.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-startX;if(Math.abs(d)>65)showPhoto(photoIndex+(d<0?1:-1))},{passive:true});
 
-const cover = document.querySelector('.print');
-const coverImage = document.getElementById('cover-image');
-const selectors = [...document.querySelectorAll('[data-cover]')];
+const preview = document.querySelector('.screen-open');
+const previewImage = preview.querySelector('img');
+const caption = document.querySelector('.gallery-screen figcaption');
+const choices = document.querySelectorAll('[data-select]');
 
-selectors.forEach((button, index) => {
+choices.forEach(button => {
   button.addEventListener('click', () => {
-    const photo = photos.find(item => item.id === button.dataset.cover);
-    if (cover.dataset.photo === photo.id) return;
-    selectors.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    const remaining = selectors.filter(item => item !== button);
-    document.querySelectorAll('.back-print img').forEach((image, position) => {
-      image.src = remaining[position].querySelector('img').src;
-    });
-    cover.dataset.photo = photo.id;
-    cover.setAttribute('aria-label', 'Открыть фото «' + photo.title + '»');
-    coverImage.src = './assets/' + photo.id + '.webp';
-    coverImage.alt = photo.alt;
-    document.getElementById('cover-caption').textContent = photo.title;
-    document.getElementById('cover-count').textContent = (index + 1) + ' / 3';
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      cover.animate([
-        { transform: 'rotate(4deg) translateY(-8px)' },
-        { transform: 'rotate(1.5deg)' }
-      ], { duration: 350, easing: 'ease-out' });
-    }
+    const photo = photos.find(item => item.id === button.dataset.select);
+    choices.forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
+    preview.dataset.photo = photo.id;
+    preview.setAttribute('aria-label', 'Открыть оригинал: ' + photo.title);
+    previewImage.src = './assets/' + photo.id + '.webp';
+    previewImage.alt = photo.alt;
+    caption.textContent = photo.title;
   });
 });

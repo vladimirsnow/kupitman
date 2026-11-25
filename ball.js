@@ -1,7 +1,7 @@
 import * as THREE from './assets/vendor/three.module.min.js';
-const stage=document.getElementById('ball-stage'),canvas=document.getElementById('ball-canvas'),button=document.getElementById('ball-spin');
+const stage=document.getElementById('ball-stage'),canvas=document.getElementById('ball-canvas');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-let kick=0,visible=false,frame=0,last=0;
+let visible=false,frame=0,last=0;
 try{
  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
  renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -25,14 +25,28 @@ try{
  const shadow=new THREE.Mesh(new THREE.PlaneGeometry(3,1),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(shadowCanvas),transparent:true,depthWrite:false}));shadow.position.set(0,-1.25,-1);scene.add(shadow);
  function size(){const r=stage.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();renderOnce()}
  function renderOnce(){renderer.render(scene,camera)}
- function tick(now){frame=0;if(!visible||document.hidden)return;const dt=Math.min((now-(last||now))/1000,.04);last=now;if(!reduced.matches||kick>.01){ball.rotation.y+=dt*(.22+kick);ball.rotation.x+=dt*kick*.3;kick*=Math.exp(-dt*1.8);if(!reduced.matches)ball.position.y=Math.sin(now*.0008)*.055;renderOnce()}if(!reduced.matches||kick>.01)frame=requestAnimationFrame(tick)}
- function start(){if(!frame){last=0;if(!reduced.matches||kick>.01)frame=requestAnimationFrame(tick)}}
- button.addEventListener('click',()=>{kick=7;start()});
+ function tick(now) {
+   frame = 0;
+   if (!visible || document.hidden || reduced.matches) return;
+   const dt = Math.min((now - (last || now)) / 1000, .04);
+   last = now;
+   ball.rotation.y += dt * .22;
+   ball.position.y = Math.sin(now * .0008) * .055;
+   renderOnce();
+   frame = requestAnimationFrame(tick);
+ }
+ function start() {
+   if (!frame && visible && !document.hidden && !reduced.matches) {
+     last = 0;
+     frame = requestAnimationFrame(tick);
+   }
+ }
+ reduced.addEventListener('change', start);
  new ResizeObserver(size).observe(stage);
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)start();else if(frame){cancelAnimationFrame(frame);frame=0}},{rootMargin:'80px'}).observe(stage);
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0}else if(visible)start()});
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();stage.classList.remove('ready');cancelAnimationFrame(frame)});
  size();stage.classList.add('ready');
 }catch(e){
- canvas.hidden=true;button.addEventListener('click',()=>{stage.querySelector('.ball-fallback').animate([{transform:'translate(-50%,-50%) rotate(0deg)'},{transform:'translate(-50%,-50%) rotate(360deg)'}],{duration:900,easing:'ease-out'})});
+ canvas.hidden = true;
 }
